@@ -1,6 +1,4 @@
-import { KeyIcon } from "@heroicons/react/20/solid";
-import { EnvelopeIcon } from "@heroicons/react/20/solid";
-import { UserIcon } from "@heroicons/react/20/solid";
+import { KeyIcon, EnvelopeIcon, UserIcon } from "@heroicons/react/20/solid";
 
 export default function Input({ name, type, errors }: IProps) {
   const inputIcon = () => {
@@ -16,17 +14,24 @@ export default function Input({ name, type, errors }: IProps) {
           {inputIcon()}
         </span>
         <input
-          className="
-          w-full rounded-full border border-neutral-300
-          outline-none py-3 px-14 text-md
-          invalid:border-1 invalid:border-red-500
-          "
+          className={`w-full rounded-full border border-neutral-300 outline-none py-3 px-14 text-md invalid:border-red-400
+            ${
+              errors?.some((error) => error.path === name)
+                ? "border-red-400"
+                : null
+            }
+          `}
           name={name}
           type={type}
+          placeholder={name}
         />
         {errors?.map((error, index) => {
-          return type === error.path ? (
-            <p key={index} className="text-sm text-red-500 px-4 mt-2">
+          // 에러가 발생한 input 아래에만 메시지 띄우기
+          return name === error.path ? (
+            <p
+              className="error-message text-sm text-red-500 px-4 mt-2"
+              key={index}
+            >
               {error.message}
             </p>
           ) : null;
