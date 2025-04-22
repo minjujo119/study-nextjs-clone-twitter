@@ -1,12 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
+body,
+input,
+select,
+textarea,
+button,
+a {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, system-ui,
+    Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
 }
-
-body {
-}
-
 @layer utilities {
+  .bg-primary-color {
+    @apply bg-teal-500;
+  }
+  .bg-disabled-color {
+    @apply bg-gray-300;
+  }
 }
