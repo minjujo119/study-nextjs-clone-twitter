@@ -1,12 +1,14 @@
 import { KeyIcon, EnvelopeIcon, UserIcon } from "@heroicons/react/20/solid";
+import { InputHTMLAttributes } from "react";
 
-export default function Input({ name, type, errors }: IProps) {
+export default function Input({ name, errors = [], ...rest }: IProps) {
   const inputIcon = () => {
     if (name === "username") return <UserIcon />;
     if (name === "email") return <EnvelopeIcon />;
     if (name === "password") return <KeyIcon />;
     return null;
   };
+
   return (
     <>
       <div className="relative">
@@ -14,39 +16,28 @@ export default function Input({ name, type, errors }: IProps) {
           {inputIcon()}
         </span>
         <input
-          className={`w-full rounded-full border border-neutral-300 outline-none py-3 px-14 text-md invalid:border-red-400
-            ${
-              errors?.some((error) => error.path === name)
-                ? "border-red-400"
-                : null
-            }
+          className={`
+            w-full rounded-full 
+            border border-neutral-300 outline-none 
+            py-3 px-14 text-md invalid:border-red-400
+            ${errors.length !== 0 ? `border-red-400` : null}
           `}
           name={name}
-          type={type}
-          placeholder={name}
+          {...rest}
         />
-        {errors?.map((error, index) => {
-          // 에러가 발생한 input 아래에만 메시지 띄우기
-          return name === error.path ? (
-            <p
-              className="error-message text-sm text-red-500 px-4 mt-2"
-              key={index}
-            >
-              {error.message}
-            </p>
-          ) : null;
-        })}
+        <ul className="error-message text-xs text-red-500 px-4 mt-2">
+          {errors?.map((error, index) => (
+            <li className="" key={index}>
+              {error}
+            </li>
+          ))}
+        </ul>
       </div>
     </>
   );
 }
 
-interface IErrors {
-  path: string;
-  message: string;
-}
-interface IProps {
+interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
-  type: string;
-  errors?: IErrors[];
+  errors?: string[];
 }

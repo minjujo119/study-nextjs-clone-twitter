@@ -7,7 +7,6 @@ import { ShieldCheckIcon } from "@heroicons/react/24/outline";
 
 export default function Home() {
   const [state, trigger] = useFormState(loginAction, null);
-  console.log(state);
   return (
     <main className="max-w-[375px] h-screen m-auto py-20 px-4">
       <header className="pt-20">
@@ -15,13 +14,28 @@ export default function Home() {
       </header>
       <div className="pt-20">
         <form action={trigger} className="space-y-3">
-          <Input name={"username"} type={"text"} errors={state?.errors} />
-          <Input name={"email"} type={"email"} errors={state?.errors} />
-          <Input name={"password"} type={"password"} errors={state?.errors} />
+          <Input
+            name={"username"}
+            type={"text"}
+            errors={state?.fieldErrors?.username}
+            placeholder={"username"}
+          />
+          <Input
+            name={"email"}
+            type={"email"}
+            errors={state?.fieldErrors?.email}
+            placeholder={"email"}
+          />
+          <Input
+            name={"password"}
+            type={"password"}
+            errors={state?.fieldErrors?.password}
+            placeholder={"password"}
+          />
           <Button />
         </form>
       </div>
-      {state?.errors.length === 0 ? (
+      {state?.success && (
         <div
           className="
           flex items-center gap-2
@@ -32,7 +46,7 @@ export default function Home() {
           <ShieldCheckIcon className="size-6" />
           <span>Welcome back!</span>
         </div>
-      ) : null}
+      )}
     </main>
   );
 }
