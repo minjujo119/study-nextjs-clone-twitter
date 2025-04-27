@@ -1,11 +1,11 @@
 import { KeyIcon, EnvelopeIcon, UserIcon } from "@heroicons/react/20/solid";
 import { InputHTMLAttributes } from "react";
 
-export default function Input({ name, errors = [], ...rest }: IProps) {
+export default function Input({ name, type, errors = [], ...rest }: IProps) {
   const inputIcon = () => {
     if (name === "username") return <UserIcon />;
     if (name === "email") return <EnvelopeIcon />;
-    if (name === "password") return <KeyIcon />;
+    if (name === "password" || type === "password") return <KeyIcon />;
     return null;
   };
 
@@ -19,13 +19,13 @@ export default function Input({ name, errors = [], ...rest }: IProps) {
           className={`
             w-full rounded-full 
             border border-neutral-300 outline-none 
-            py-3 px-14 text-md invalid:border-red-400
+            py-3 px-14 text-md invalid:border-[var(--invalid-color)]
             ${errors.length !== 0 ? `border-red-400` : null}
           `}
           name={name}
           {...rest}
         />
-        <ul className="error-message text-xs text-red-500 px-4 mt-2">
+        <ul className="text-xs text-[var(--invalid-color)] px-4 mt-2">
           {errors?.map((error, index) => (
             <li className="" key={index}>
               {error}

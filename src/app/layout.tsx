@@ -12,8 +12,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="w-full h-screen bg-neutral-50">{children}</body>
+    <html lang="ko">
+      <body>{children}</body>
     </html>
   );
 }
