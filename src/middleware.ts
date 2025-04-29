@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import getSession from "@/lib/session";
 
-const publicPath = new Set(["/", "/log-in", "/create-account"]);
+const publicPath = new Set(["/log-in", "/create-account"]);
 
 export async function middleware(request: NextRequest) {
   const currentPath = request.nextUrl.pathname;

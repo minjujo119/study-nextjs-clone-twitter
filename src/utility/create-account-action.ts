@@ -54,7 +54,7 @@ export const createAccountAction = async (
     session.id = user!.id;
     await session.save();
 
-    redirect("/profile");
+    redirect("/");
 
     return {
       success: false,

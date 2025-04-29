@@ -4,6 +4,7 @@ import Button from "@/components/Button";
 import { createAccountAction } from "@/utility/create-account-action";
 import { useFormState } from "react-dom";
 import { IformState } from "@/lib/interface";
+import Link from "next/link";
 
 export default function CreateAccountPage() {
   const initialState: IformState = {
@@ -13,7 +14,7 @@ export default function CreateAccountPage() {
   const [state, trigger] = useFormState(createAccountAction, initialState);
 
   return (
-    <main className="main">
+    <>
       <header className="pt-20">
         <h1 className="main-title">Join us</h1>
       </header>
@@ -46,6 +47,15 @@ export default function CreateAccountPage() {
           <Button text={"SIGN UP"} />
         </form>
       </div>
-    </main>
+      <div className="pt-5 space-x-2 text-center">
+        <span>이미 계정이 있나요?</span>
+        <Link
+          href={"/create-account"}
+          className="underline text-[var(--success-color)]"
+        >
+          Sign in
+        </Link>
+      </div>
+    </>
   );
 }

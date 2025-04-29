@@ -5,13 +5,15 @@
 
 :root {
   --bg-color: #fafafa;
-  --text-color: #333333;
-  --border-color: #a1a1aa;
+  --border-color: #bbbbbb;
   --primary-color: #2dd4bf;
   --warning-color: #f59e0b;
-  --invalid-color: #ef4444; /* 빨간색 */
-  --success-color: #10b981; /* 초록색 */
-  --disabled-color: #e4e4e7;
+  --invalid-color: #ef4444;
+  --success-color: #10b981;
+  --disabled-color: #aaaaaa;
+  --text-black: #333333;
+  --text-gray: #999999;
+  --skeleton-color: #cecece;
 }
 @layer base {
   html,
@@ -24,11 +26,8 @@
   }
 }
 @layer components {
-  .main {
-    @apply relative max-w-[400px] min-w-[360px] h-screen m-auto py-20 px-4;
-  }
   .main-title {
-    @apply text-center text-4xl pt-8 font-extrabold uppercase;
+    @apply text-center text-4xl font-extrabold uppercase;
   }
   .btn-sm {
     @apply rounded-full text-center py-1 px-5 border border-[var(--border-color)]
@@ -51,7 +50,7 @@
     @apply text-white bg-[var(--primary-color)];
   }
   .btn-secondary {
-    @apply text-[var(--text-color)] bg-transparent
+    @apply text-[var(--text-black)] bg-transparent
     border border-[var(--border-color)];
   }
 }

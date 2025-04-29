@@ -46,7 +46,7 @@ export const loginAction = async (
     const session = await getSession();
     session.id = user!.id;
     await session.save();
-    redirect("/profile");
+    redirect("/");
 
     return {
       success: true,
