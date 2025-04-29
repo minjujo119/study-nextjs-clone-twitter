@@ -1,10 +1,9 @@
-import { formatedTimestamp, sinceWhenFormat } from "@/utility/formatter";
+import { formatedTimestamp } from "@/utility/formatter";
 import { getTweetDetail } from "@/utility/tweets-action";
-import { HeartIcon as SolidHeartIcon } from "@heroicons/react/24/solid";
+// import { HeartIcon as SolidHeartIcon } from "@heroicons/react/24/solid";
 import { HeartIcon as LineHeartIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { addLikeAction } from "@/utility/like-action";
 
 export default async function TweetDetailPage({
   params,
