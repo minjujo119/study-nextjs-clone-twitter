@@ -28,7 +28,7 @@ export default async function ProfilePage() {
     redirect("/");
   };
   return (
-    <main className="main">
+    <>
       <section>
         <h1 className="main-title">profile</h1>
       </section>
@@ -52,6 +52,6 @@ export default async function ProfilePage() {
           <button className="btn-full btn-secondary">Logout</button>
         </form>
       </nav>
-    </main>
+    </>
   );
 }

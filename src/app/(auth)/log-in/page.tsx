@@ -4,6 +4,7 @@ import Input from "@/components/Input";
 import { loginAction } from "@/utility/login-action";
 import { useFormState } from "react-dom";
 import { IformState } from "@/lib/interface";
+import Link from "next/link";
 
 export default function LoginPage() {
   const initialState: IformState = {
@@ -13,7 +14,7 @@ export default function LoginPage() {
   const [state, trigger] = useFormState(loginAction, initialState);
 
   return (
-    <main className="main">
+    <>
       <header className="pt-20">
         <h1 className="main-title">Login</h1>
       </header>
@@ -40,6 +41,15 @@ export default function LoginPage() {
           <Button text={"LOGIN"} />
         </form>
       </div>
-    </main>
+      <div className="pt-5 space-x-2 text-center">
+        <span>처음 오셨나요?</span>
+        <Link
+          href={"/create-account"}
+          className="underline text-[var(--success-color)]"
+        >
+          Join us
+        </Link>
+      </div>
+    </>
   );
 }
