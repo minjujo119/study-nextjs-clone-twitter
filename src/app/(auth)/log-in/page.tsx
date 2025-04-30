@@ -3,15 +3,13 @@ import Button from "@/components/Button";
 import Input from "@/components/Input";
 import { loginAction } from "@/utility/login-action";
 import { useFormState } from "react-dom";
-import { IformState } from "@/lib/interface";
 import Link from "next/link";
 
 export default function LoginPage() {
-  const initialState: IformState = {
+  const [state, trigger] = useFormState(loginAction, {
     success: false,
     fieldErrors: null,
-  };
-  const [state, trigger] = useFormState(loginAction, initialState);
+  });
 
   return (
     <>
