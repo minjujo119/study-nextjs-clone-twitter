@@ -13,8 +13,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body>
-        <main className="relative max-w-[400px] min-w-[360px] h-screen m-auto py-20 px-4;">
+      <body className="bg-[var(--bg-color)]">
+        <main className="relative max-w-[480px] min-w-[360px] min-h-screen m-auto py-20 px-3">
           {children}
         </main>
       </body>
