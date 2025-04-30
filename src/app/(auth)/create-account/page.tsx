@@ -3,15 +3,13 @@ import Input from "@/components/Input";
 import Button from "@/components/Button";
 import { createAccountAction } from "@/utility/create-account-action";
 import { useFormState } from "react-dom";
-import { IformState } from "@/lib/interface";
 import Link from "next/link";
 
 export default function CreateAccountPage() {
-  const initialState: IformState = {
+  const [state, trigger] = useFormState(createAccountAction, {
     success: false,
     fieldErrors: null,
-  };
-  const [state, trigger] = useFormState(createAccountAction, initialState);
+  });
 
   return (
     <>

@@ -1,5 +1,6 @@
 "use server";
 import db from "@/lib/db";
+import { IformState } from "@/lib/interface";
 import getSession from "@/lib/session";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
@@ -12,7 +13,10 @@ const tweetSchema = z.object({
     .min(2, "너무 짧아요"),
 });
 
-export default async function addTweetAction(_: any, formdata: FormData) {
+export default async function addTweetAction(
+  prevState: IformState,
+  formdata: FormData
+) {
   // 임시 딜레이 설정
   await new Promise((resolve) => setTimeout(resolve, 500));
 

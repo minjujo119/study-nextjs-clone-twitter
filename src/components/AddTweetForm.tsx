@@ -5,7 +5,10 @@ import Button from "./Button";
 import { useEffect } from "react";
 
 export default function AddTweetForm() {
-  const [state, trigger] = useFormState(addTweetAction, null);
+  const [state, trigger] = useFormState(addTweetAction, {
+    success: false,
+    fieldErrors: null,
+  });
 
   // 트윗 등록 성공 시 강제 페이지 새로고침
   useEffect(() => {
