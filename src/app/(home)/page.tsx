@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import AddTweetForm from "@/components/AddTweetForm";
 import TweetList from "@/components/TweetList";
 import { getTweets } from "@/utility/tweets-action";
