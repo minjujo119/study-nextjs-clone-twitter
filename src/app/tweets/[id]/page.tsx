@@ -11,10 +11,10 @@ export default async function TweetDetailPage({
   params: { id: string };
 }) {
   const tweetId = Number(params.id);
+  if (isNaN(tweetId)) notFound();
   const tweetDetails = await getTweetDetail(tweetId);
-  if (!tweetDetails) {
-    notFound();
-  }
+  if (!tweetDetails) notFound();
+
   return (
     <>
       <section className="flex items-center gap-3">

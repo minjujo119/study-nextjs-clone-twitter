@@ -19,7 +19,9 @@ export default function Input({ name, type, errors = [], ...rest }: IProps) {
           className={`
             w-full rounded-full 
             border border-neutral-300 outline-none 
-            py-3 px-14 text-md invalid:border-[var(--invalid-color)]
+            py-3 px-14 text-md
+            invalid:border-[var(--invalid-color)]
+            focus:border-[var(--primary-color)]
             ${errors.length !== 0 ? `border-red-400` : null}
           `}
           name={name}
