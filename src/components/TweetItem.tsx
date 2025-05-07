@@ -1,4 +1,4 @@
-import { sinceWhenFormat } from "@/utility/formatter";
+import { sinceWhenFormat } from "@/lib/formatter";
 import Link from "next/link";
 // import { HeartIcon as SolidHeartIcon } from "@heroicons/react/24/solid";
 import { HeartIcon as LineHeartIcon } from "@heroicons/react/24/outline";

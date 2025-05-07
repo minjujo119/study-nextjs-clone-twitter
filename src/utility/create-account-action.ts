@@ -2,12 +2,12 @@
 import bcrypt from "bcrypt";
 import db from "@/lib/db";
 import getSession from "@/lib/session";
-import { IformState } from "@/lib/interface";
-import { createAccountSchema } from "@/utility/validation";
+import { IFormState } from "@/lib/interface";
+import { createAccountSchema } from "@/utility/login-validation";
 import { redirect } from "next/navigation";
 
 export const createAccountAction = async (
-  prevState: IformState,
+  prevState: IFormState,
   formData: FormData
 ) => {
   // 로딩 상태의 버튼 확인하기 위한 딜레이

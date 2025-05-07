@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Login Practice",
-  description: "MJ's login Practice",
+  title: {
+    template: "%s | Zwitter",
+    default: "Zwitter",
+  },
+  description: "MJ's Zwitter",
 };
 
 export default function RootLayout({

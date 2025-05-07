@@ -22,7 +22,11 @@ export default function AddTweetForm() {
       <label className="block text-lg font-semibold">{`What's New?`}</label>
       <textarea
         name="tweet"
-        className="block w-full h-20 p-3 my-3 text-sm bg-white rounded-xl resize-none"
+        className="
+        block w-full h-20 p-3 my-3 
+        text-sm bg-white rounded-xl resize-none
+        outline-none focus:ring-2 focus:ring-[var(--primary-color)]
+        "
         placeholder="내용을 입력하세요"
       />
       {state?.fieldErrors?.tweet?.map((error, index) => {
