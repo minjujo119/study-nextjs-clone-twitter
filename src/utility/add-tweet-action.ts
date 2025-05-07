@@ -1,8 +1,7 @@
 "use server";
 import db from "@/lib/db";
-import { IformState } from "@/lib/interface";
+import { IFormState } from "@/lib/interface";
 import getSession from "@/lib/session";
-import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
 const tweetSchema = z.object({
@@ -14,7 +13,7 @@ const tweetSchema = z.object({
 });
 
 export default async function addTweetAction(
-  prevState: IformState,
+  prevState: IFormState,
   formdata: FormData
 ) {
   // 임시 딜레이 설정
@@ -50,8 +49,6 @@ export default async function addTweetAction(
         },
       });
     }
-    // data.tweet = "";
-    revalidatePath("/write2");
     return {
       success: true,
       fieldErrors: null,

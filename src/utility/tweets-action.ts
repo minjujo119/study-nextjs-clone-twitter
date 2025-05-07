@@ -49,6 +49,7 @@ export async function getTweetDetail(id: number) {
       _count: {
         select: {
           Like: true,
+          Comment: true,
         },
       },
     },

@@ -42,12 +42,12 @@ model Like {
 }
 
 model Comment {
+  id         Int      @id @default(autoincrement())
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
-  user       User     @relation(fields: [userId], references: [id])
-  tweet      Tweet    @relation(fields: [tweetId], references: [id])
+  comment    String   @default("")
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tweet      Tweet    @relation(fields: [tweetId], references: [id], onDelete: Cascade)
   userId     Int
   tweetId    Int
-
-  @@id(name: "id", [userId, tweetId])
 }
