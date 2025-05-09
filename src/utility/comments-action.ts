@@ -1,6 +1,6 @@
-// "use server";
+"use server";
 import db from "@/lib/db";
-import { unstable_cache } from "next/cache";
+import { revalidateTag, unstable_cache } from "next/cache";
 
 // Comment DB 가져오기
 export const getComments = async (tweetId: number) => {
@@ -39,10 +39,12 @@ export const getCachedComments = async (tweetId: number) => {
   return cachedOperation(tweetId);
 };
 
-export const deleteComments = async (commentId: number) => {
+// Comment 삭제하기
+export const deleteComments = async (tweetId: number, commentId: number) => {
   await db.comment.delete({
     where: {
       id: commentId,
     },
   });
+  revalidateTag(`comments-in-${tweetId}`);
 };
