@@ -11,7 +11,7 @@ export default function SearchPage() {
     searchResults: null,
   });
   return (
-    <>
+    <div className="container">
       {/* 검색창 */}
       <h2 className="main-title">Search</h2>
       <section className="pt-7">
@@ -45,6 +45,6 @@ export default function SearchPage() {
           />
         ))}
       </section>
-    </>
+    </div>
   );
 }

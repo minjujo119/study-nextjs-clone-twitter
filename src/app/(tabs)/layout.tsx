@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "@/app/globals.css";
+import Menu from "@/components/Menu";
 
 export const metadata: Metadata = {
   title: {
@@ -15,12 +16,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
-      <body className="bg-[var(--bg-color)]">
-        <main className="relative limited-width min-h-screen m-auto">
-          {children}
-        </main>
-      </body>
-    </html>
+    <div className="flex justify-between items-start border-x border-x-[var(--border-color)]">
+      <Menu />
+      {children}
+    </div>
   );
 }

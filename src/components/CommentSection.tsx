@@ -43,7 +43,7 @@ export default function CommentSection({ tweetId, allComments }: IProps) {
   return (
     <>
       {/* 답글 입력 폼*/}
-      <div className="flex items-start gap-3 py-6">
+      <div className="flex items-start gap-3 py-6 px-containerSide">
         <span className="block size-14 rounded-full bg-[var(--primary-color)]"></span>
         <form action={formAction} className="flex-1">
           <textarea
@@ -69,7 +69,8 @@ export default function CommentSection({ tweetId, allComments }: IProps) {
         {optimisticComments.map((comment) => (
           <li key={comment.id}>
             <CommentItem
-              id={comment.id}
+              tweetId={tweetId}
+              commentId={comment.id}
               comment={comment.comment}
               username={comment.user.username}
               created_at={comment?.created_at}

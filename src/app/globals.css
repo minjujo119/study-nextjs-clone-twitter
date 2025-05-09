@@ -28,9 +28,17 @@
     display: none;
   }
 }
+@layer utilities {
+}
 @layer components {
+  .container {
+    @apply flex-1 py-12 min-h-screen border-l border-l-[var(--border-color)];
+  }
+  .limited-width {
+    @apply max-w-screen-md min-w-[480px];
+  }
   .main-title {
-    @apply text-center text-4xl font-extrabold uppercase;
+    @apply text-left text-4xl font-extrabold uppercase;
   }
   .btn-sm {
     @apply rounded-full text-center py-1 px-5 border border-[var(--border-color)]

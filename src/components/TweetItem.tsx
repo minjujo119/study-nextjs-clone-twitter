@@ -13,7 +13,7 @@ export default function TweetItem({
   return (
     <Link
       href={`/tweets/${id}`}
-      className="py-5 flex justify-between gap-3 items-center border-b border-b-[var(--border-color)]"
+      className="py-5 px-containerSide flex justify-between gap-3 items-center border-t border-t-[var(--border-color)]"
     >
       <div className="flex items-center gap-4">
         <span className="img block shrink-0 size-14 rounded-full bg-[var(--primary-color)]"></span>
