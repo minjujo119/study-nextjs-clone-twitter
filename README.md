@@ -47,3 +47,12 @@
 1. /tweets/[id] 페이지에서 유저가 트윗에 답글을 추가할 수 있어야 하며 트윗에 좋아요 표시할 수 있어야 합니다.
 2. 프리즈마에서 Response 모델을 만들고 서버 액션, Zod 유효성 검사, revalidatePath 및 useOptimistic을 사용합니다.
 3. 좋아요와 트윗 답글은 useOptimistic 으로 처리해야 합니다.
+
+## Assignment33
+
+1. 유저가 키워드를 입력해서 트윗을 찾을 수 있는 /search 페이지 구현
+2. 유저의 프로필과 유저가 쓴 트윗을 볼 수 있는 /users/[username] 페이지 구현
+3. 유저와 프로필 주인이 일치하면 프로필을 수정할 수 있는 링크를 띄우고 /users/[username]/edit 페이지 구현
+4. /users/[username]/edit 페이지에서 username, email, bio, password를 수정할 수 있어야 함.
+5. Zod, Server Actions, useOptimistic and revalidatePath 사용하기
+6. Vercel and Vercel Postgres로 배포하기

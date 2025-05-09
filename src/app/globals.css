@@ -23,6 +23,10 @@
       "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
       "Segoe UI Symbol", sans-serif;
   }
+  [type="search"]::-webkit-search-cancel-button,
+  [type="search"]::-webkit-search-results-button {
+    display: none;
+  }
 }
 @layer components {
   .main-title {
