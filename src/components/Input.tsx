@@ -12,17 +12,19 @@ export default function Input({ name, type, errors = [], ...rest }: IProps) {
   return (
     <>
       <div className="relative">
-        <span className="absolute size-5 top-[15px] left-5 text-neutral-500">
+        <span className="absolute size-5 top-[15px] left-5 text-[var(--text-color)]">
           {inputIcon()}
         </span>
         <input
           className={`
             w-full rounded-full 
-            border border-neutral-300
+            bg-transparent
+            border border-[var(--border-color)]
             py-3 px-14 text-md
             invalid:border-[var(--invalid-color)]
             focus:border-[var(--primary-color)]
-            ${errors.length !== 0 ? `border-red-400` : null}
+            placeholder:text-[var(--text-gray)]
+            ${errors.length !== 0 ? `border-[var(--invalid-color)]` : null}
           `}
           name={name}
           {...rest}

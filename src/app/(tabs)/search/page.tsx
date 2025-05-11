@@ -13,18 +13,23 @@ export default function SearchPage() {
   return (
     <div className="container">
       {/* 검색창 */}
-      <h2 className="main-title">Search</h2>
-      <section className="pt-7">
+      <section className="pt-7 px-containerSide">
         <form action={trigger} className="relative">
           <input
-            className="w-full outline-none rounded-full appearance-none py-5 px-9"
+            className="
+            w-full outline-none rounded-full 
+            bg-transparent 
+            ring-1 ring-[var(--border-color)] py-4 px-9
+            placeholder:text-[var(--text-gray)]
+            focus:ring-[var(--primary-color)]
+            "
             name="search"
             type="search"
             placeholder="검색어를 입력하세요"
           />
           <span>{state?.fieldErrors?.search}</span>
           <button
-            className="p-2 absolute top-2 right-5 text-[var(--text-gray)]"
+            className="p-2 absolute top-1 right-5 text-[var(--text-gray)]"
             aria-label="search"
           >
             <MagnifyingGlassIcon className="size-8 text-inherit" />

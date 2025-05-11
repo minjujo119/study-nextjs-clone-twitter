@@ -4,6 +4,7 @@ import { useOptimistic, useRef } from "react";
 import addCommentAction from "@/utility/add-comment-action";
 import { useFormState } from "react-dom";
 import { IComment, IFormState } from "@/lib/interface";
+import { UserCircleIcon } from "@heroicons/react/24/outline";
 
 export default function CommentSection({ tweetId, allComments }: IProps) {
   // 답글 입력폼 초기화를 위한 저장
@@ -44,23 +45,32 @@ export default function CommentSection({ tweetId, allComments }: IProps) {
     <>
       {/* 답글 입력 폼*/}
       <div className="flex items-start gap-3 py-6 px-containerSide">
-        <span className="block size-14 rounded-full bg-[var(--primary-color)]"></span>
-        <form action={trigger} className="flex-1">
+        <span className="avatar">
+          <UserCircleIcon className="icon-avatar-default" />
+        </span>
+        <form action={trigger} className="flex-1 space-y-2">
           <textarea
             ref={textAreaRef}
             name="comment"
             placeholder="답글을 입력하세요"
-            className="
-          block w-full h-20 p-3 
-          text-sm bg-white rounded-xl resize-none
-          outline-none focus:ring-2 focus:ring-[var(--primary-color)]
-          "
+            className={`
+              block w-full h-20 p-3 
+              bg-transparent
+              text-sm rounded-xl resize-none
+              ring-1 ring-[var(--border-color)]
+              outline-none focus:ring-[var(--primary-color)]
+              placeholder:text-[var(--text-gray)]
+            `}
           />
           <input type="hidden" name="tweetId" value={tweetId} />
-          <span>{state.fieldErrors?.comment}</span>
-          <button type="submit" className="btn btn-sm">
-            Reply
-          </button>
+          <p className="text-sm text-[var(--invalid-color)]">
+            {state.fieldErrors?.comment}
+          </p>
+          <div className="text-right">
+            <button type="submit" className="btn-sm btn-secondary">
+              댓글 달기
+            </button>
+          </div>
         </form>
       </div>
 

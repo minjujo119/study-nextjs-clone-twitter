@@ -19,13 +19,17 @@ export default function AddTweetForm() {
 
   return (
     <form action={trigger}>
-      <label className="block text-lg font-semibold">{`What's New?`}</label>
+      <label className="block text-lg font-semibold text-[var(--text-color)]">
+        What's New?
+      </label>
       <textarea
         name="tweet"
         className="
         block w-full h-20 p-3 my-3 
-        text-sm bg-white rounded-xl resize-none
-        outline-none focus:ring-2 focus:ring-[var(--primary-color)]
+        bg-transparent
+        text-sm rounded-xl resize-none
+        ring-1 ring-[var(--border-color)]
+        outline-none focus:ring-[var(--primary-color)]
         "
         placeholder="내용을 입력하세요"
       />

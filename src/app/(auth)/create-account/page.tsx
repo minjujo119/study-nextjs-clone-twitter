@@ -49,7 +49,7 @@ export default function CreateAccountPage() {
         <span>이미 계정이 있나요?</span>
         <Link
           href={"/log-in"}
-          className="underline text-[var(--success-color)]"
+          className="underline text-[var(--primary-color)]"
         >
           로그인
         </Link>

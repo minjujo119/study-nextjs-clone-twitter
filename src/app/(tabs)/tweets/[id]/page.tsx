@@ -5,6 +5,7 @@ import { getCachedComments } from "@/utility/comments-action";
 import { getCachedLikeStatus } from "@/utility/like-action";
 import { getTweetDetail } from "@/utility/tweets-action";
 import { ChatBubbleBottomCenterTextIcon } from "@heroicons/react/24/outline";
+import { UserCircleIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -34,13 +35,13 @@ export default async function TweetDetailPage({
     <div className="container">
       <section>
         {/* 유저정보 */}
-        <div className="flex items-center gap-3 px-containerSide">
-          <span className="block size-14 rounded-full bg-[var(--primary-color)]"></span>
-          <div className="space-x-2">
-            <Link href={"/profile"} className="text-lg">
-              {tweetDetails.user.username}
-            </Link>
-          </div>
+        <div className="flex items-center gap-2 px-containerSide">
+          <span className="avatar">
+            <UserCircleIcon className="icon-avatar-default" />
+          </span>{" "}
+          <Link href={"/profile"} className="text-lg">
+            {tweetDetails.user.username}
+          </Link>
         </div>
         {/* 본문 */}
         <div className="pt-5 space-y-3 px-containerSide">

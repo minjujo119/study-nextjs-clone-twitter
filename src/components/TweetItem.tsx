@@ -2,6 +2,7 @@ import { sinceWhenFormat } from "@/lib/formatter";
 import Link from "next/link";
 // import { HeartIcon as SolidHeartIcon } from "@heroicons/react/24/solid";
 import { HeartIcon as LineHeartIcon } from "@heroicons/react/24/outline";
+import { UserCircleIcon } from "@heroicons/react/24/outline";
 
 export default function TweetItem({
   id,
@@ -13,10 +14,17 @@ export default function TweetItem({
   return (
     <Link
       href={`/tweets/${id}`}
-      className="py-5 px-containerSide flex justify-between gap-3 items-center border-t border-t-[var(--border-color)] last:border-b last:border-b-[var(--border-color)]"
+      className="
+        flex justify-between gap-3 items-center 
+        py-5 px-containerSide 
+        border-t border-t-[var(--border-color)]
+        first:border-t-0
+      "
     >
-      <div className="flex items-center gap-4">
-        <span className="img block shrink-0 size-14 rounded-full bg-[var(--primary-color)]"></span>
+      <div className="flex items-center gap-3">
+        <span className="avatar">
+          <UserCircleIcon className="icon-avatar-default" />
+        </span>
         <div>
           <div className="flex gap-1">
             <p className="font-semibold">{username}</p>
@@ -29,7 +37,7 @@ export default function TweetItem({
         </div>
       </div>
       <div>
-        <LineHeartIcon className="size-8 text-red-500" />
+        <LineHeartIcon className="size-6 text-[var(--primary-color)]" />
         <p className="text-sm text-center leading-none">{like}</p>
       </div>
     </Link>
