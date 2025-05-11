@@ -13,10 +13,10 @@ export default function LoginPage() {
 
   return (
     <>
-      <header className="pt-20">
-        <h1 className="main-title">Login</h1>
+      <header className="-mt-20">
+        <h1 className="text-[200px] leading-none text-center">&#120168;</h1>
       </header>
-      <div className="pt-20">
+      <div className="pt-5">
         <form action={trigger} className="space-y-3">
           <Input
             name={"username"}
@@ -43,9 +43,9 @@ export default function LoginPage() {
         <span>처음 오셨나요?</span>
         <Link
           href={"/create-account"}
-          className="underline text-[var(--success-color)]"
+          className="underline text-[var(--primary-color)]"
         >
-          Join us
+          계정 만들기
         </Link>
       </div>
     </>

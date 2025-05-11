@@ -13,10 +13,10 @@ export default function CreateAccountPage() {
 
   return (
     <>
-      <header className="pt-20">
-        <h1 className="main-title">Join us</h1>
+      <header className="-mt-20">
+        <h1 className="text-[200px] leading-none text-center">&#120168;</h1>
       </header>
-      <div className="pt-20">
+      <div className="pt-5">
         <form action={trigger} className="space-y-3">
           <Input
             name={"username"}
@@ -48,10 +48,10 @@ export default function CreateAccountPage() {
       <div className="pt-5 space-x-2 text-center">
         <span>이미 계정이 있나요?</span>
         <Link
-          href={"/create-account"}
+          href={"/log-in"}
           className="underline text-[var(--success-color)]"
         >
-          Sign in
+          로그인
         </Link>
       </div>
     </>
