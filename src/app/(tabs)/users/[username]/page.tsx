@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import TweetItem from "@/components/TweetItem";
 import { formatedTimestamp } from "@/lib/formatter";
 import { getCurrentUser } from "@/utility/get-current-user";
