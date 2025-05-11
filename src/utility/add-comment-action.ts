@@ -19,7 +19,7 @@ export default async function addCommentAction(
   formdata: FormData
 ): Promise<IFormState> {
   // 임시 딜레이 설정
-  await new Promise((resolve) => setTimeout(resolve, 500));
+  // await new Promise((resolve) => setTimeout(resolve, 500));
 
   const data = {
     comment: formdata.get("comment"),

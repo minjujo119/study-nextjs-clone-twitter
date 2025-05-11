@@ -3,7 +3,7 @@ import db from "@/lib/db";
 
 export async function getTweets(page: number) {
   // 스켈레톤을 보기 위한 임시 딜레이
-  await new Promise((resolve) => setTimeout(resolve, 500));
+  // await new Promise((resolve) => setTimeout(resolve, 500));
 
   const tweets = await db.tweet.findMany({
     select: {
@@ -32,7 +32,7 @@ export async function getTweets(page: number) {
 
 export async function getTweetDetail(id: number) {
   // 임시 딜레이
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  // await new Promise((resolve) => setTimeout(resolve, 1000));
 
   const details = await db.tweet.findUnique({
     where: {

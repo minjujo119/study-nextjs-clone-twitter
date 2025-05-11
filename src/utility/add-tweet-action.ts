@@ -17,7 +17,7 @@ export default async function addTweetAction(
   formdata: FormData
 ) {
   // 임시 딜레이 설정
-  await new Promise((resolve) => setTimeout(resolve, 500));
+  // await new Promise((resolve) => setTimeout(resolve, 500));
 
   const data = {
     tweet: formdata.get("tweet"),

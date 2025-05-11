@@ -10,7 +10,7 @@ export const loginAction = async (
   formData: FormData
 ) => {
   // 로딩 상태의 버튼 확인하기 위한 딜레이
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  // await new Promise((resolve) => setTimeout(resolve, 1000));
 
   // input 입력값 가져오기
   const data = {
