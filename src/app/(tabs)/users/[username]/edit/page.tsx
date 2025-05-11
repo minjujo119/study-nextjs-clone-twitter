@@ -1,4 +1,7 @@
+export const dynamic = "force-dynamic";
+
 import EditForm from "@/components/Editform";
+
 import {
   editBioAction,
   editEmailAction,
