@@ -20,7 +20,8 @@ export default function AddTweetForm() {
   return (
     <form action={trigger}>
       <label className="block text-lg font-semibold text-[var(--text-color)]">
-        What's New?
+        {/* 특수문자 때문에 백틱 감싸놓음 */}
+        {`What's New?`}
       </label>
       <textarea
         name="tweet"
@@ -35,7 +36,7 @@ export default function AddTweetForm() {
       />
       {state?.fieldErrors?.tweet?.map((error, index) => {
         return (
-          <span key={index} className="text-[var(--invalid-color)] font-sm">
+          <span key={index} className="text-[var(--invalid-color)] text-sm">
             {error}
           </span>
         );
