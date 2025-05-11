@@ -1,6 +1,6 @@
 "use server";
 import db from "@/lib/db";
-import getSession from "@/lib/session";
+import getSession from "@/utility/get-session";
 import { revalidateTag, unstable_cache } from "next/cache";
 
 // like 액션

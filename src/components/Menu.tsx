@@ -1,11 +1,30 @@
-export default function Menu() {
+import Link from "next/link";
+
+export default function Menu({ userId, username }: IProps) {
   return (
-    <nav className="w-40 py-10 bg-[var(--bg-color)] flex-shrink-0">
-      <ul className="flex flex-col justify-between m-auto *:py-3 *:px-5 *:text-sm">
-        <li className="">Home</li>
-        <li className="">Search</li>
-        <li className="">Account</li>
-      </ul>
+    <nav className="w-40 min-h-screen py-10 bg-[var(--bg-color)] flex-shrink-0">
+      <div className="*:text-lg *:rounded-full *:overflow-hidden *:transition-colors">
+        <Link className="hover:underline inline-block py-3 px-5" href={"/"}>
+          Home
+        </Link>
+        <Link
+          className="hover:underline inline-block py-3 px-5"
+          href={"/search"}
+        >
+          Search
+        </Link>
+        <Link
+          className="hover:underline inline-block py-3 px-5"
+          href={`/users/${username}`}
+        >
+          My Page
+        </Link>
+      </div>
     </nav>
   );
+}
+
+interface IProps {
+  userId: number;
+  username: string;
 }

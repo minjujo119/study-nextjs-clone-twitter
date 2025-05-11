@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import getSession from "@/lib/session";
+import getSession from "@/utility/get-session";
 
 const publicPath = new Set(["/log-in", "/create-account"]);
 

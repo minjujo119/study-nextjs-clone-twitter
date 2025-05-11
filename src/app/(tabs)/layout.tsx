@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "@/app/globals.css";
 import Menu from "@/components/Menu";
+import getSession from "@/utility/get-session";
 
 export const metadata: Metadata = {
   title: {
@@ -10,14 +11,18 @@ export const metadata: Metadata = {
   description: "MJ's Zwitter",
 };
 
-export default function RootLayout({
+export default async function TabLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // 현재 로그인된 유저 쿠키 가져오기
+  const { id, username } = await getSession();
+
+  // console.log(id, username);
   return (
     <div className="flex justify-between items-start border-x border-x-[var(--border-color)]">
-      <Menu />
+      <Menu userId={id!} username={username} />
       {children}
     </div>
   );

@@ -1,7 +1,7 @@
 "use server";
 import db from "@/lib/db";
 import { IFormState } from "@/lib/interface";
-import getSession from "@/lib/session";
+import getSession from "@/utility/get-session";
 import { z } from "zod";
 
 const tweetSchema = z.object({
@@ -25,7 +25,7 @@ export default async function addTweetAction(
   const result = tweetSchema.safeParse(data);
 
   if (!result.success) {
-    console.log(result.error.flatten().fieldErrors);
+    // console.log(result.error.flatten().fieldErrors);
     return {
       success: false,
       fieldErrors: result.error.flatten().fieldErrors,

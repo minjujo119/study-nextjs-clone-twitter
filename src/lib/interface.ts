@@ -25,6 +25,7 @@ export interface IFormState {
     password?: string[];
     password_confirm?: string[];
     search?: string[];
+    bio?: string[];
   } | null;
   newComment?: IComment | null;
   searchResults?: ITweet[] | null;

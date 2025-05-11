@@ -10,7 +10,7 @@ export default function TweetList({ initialTweets }: IProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [isLast, setIsLast] = useState(false);
   const page = useRef(0);
-  console.log("now", page.current);
+  // console.log("now", page.current);
 
   // 다음 페이지 넘기기
   const onNextButtonClick = async () => {

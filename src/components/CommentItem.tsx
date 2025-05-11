@@ -1,4 +1,3 @@
-"use client";
 import { formatedTimestamp } from "@/lib/formatter";
 import { deleteComments } from "@/utility/comments-action";
 

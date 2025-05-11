@@ -18,7 +18,7 @@ export default function Input({ name, type, errors = [], ...rest }: IProps) {
         <input
           className={`
             w-full rounded-full 
-            border border-neutral-300 outline-none 
+            border border-neutral-300
             py-3 px-14 text-md
             invalid:border-[var(--invalid-color)]
             focus:border-[var(--primary-color)]
