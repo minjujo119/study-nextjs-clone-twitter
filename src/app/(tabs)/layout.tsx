@@ -17,12 +17,12 @@ export default async function TabLayout({
   children: React.ReactNode;
 }>) {
   // 현재 로그인된 유저 쿠키 가져오기
-  const { id, username } = await getSession();
+  const { username } = await getSession();
 
   // console.log(id, username);
   return (
     <div className="flex justify-between items-start border-x border-x-[var(--border-color)]">
-      <Menu userId={id!} username={username} />
+      <Menu username={username} />
       {children}
     </div>
   );

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Menu({ userId, username }: IProps) {
+export default function Menu({ username }: IProps) {
   return (
     <nav className="w-40 min-h-screen py-10 bg-[var(--bg-color)] flex-shrink-0">
       <div className="*:text-lg *:rounded-full *:overflow-hidden *:transition-colors">
@@ -20,11 +20,15 @@ export default function Menu({ userId, username }: IProps) {
           My Page
         </Link>
       </div>
+
+      <div>
+        <span></span>
+        <p>{username}</p>
+      </div>
     </nav>
   );
 }
 
 interface IProps {
-  userId: number;
   username: string;
 }
