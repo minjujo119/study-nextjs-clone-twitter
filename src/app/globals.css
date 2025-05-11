@@ -5,14 +5,14 @@
 
 :root {
   --bg-color: #fafafa;
-  --border-color: #bbbbbb;
+  --border-color: #ccc;
   --primary-color: #2dd4bf;
   --warning-color: #f59e0b;
   --invalid-color: #ef4444;
   --success-color: #10b981;
-  --disabled-color: #aaaaaa;
-  --text-black: #333333;
-  --text-gray: #999999;
+  --disabled-color: #bbb;
+  --text-black: #333;
+  --text-gray: #999;
   --skeleton-color: #cecece;
 }
 @layer base {
@@ -23,14 +23,31 @@
       "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
       "Segoe UI Symbol", sans-serif;
   }
+  [type="search"]::-webkit-search-cancel-button,
+  [type="search"]::-webkit-search-results-button {
+    display: none;
+  }
+  input,
+  textarea {
+    @apply outline-none appearance-none resize-none;
+  }
 }
+
 @layer components {
+  .container {
+    @apply flex-1 py-12 min-h-screen border-l border-l-[var(--border-color)];
+  }
+  .limited-width {
+    @apply max-w-screen-md min-w-[480px];
+  }
   .main-title {
     @apply text-center text-4xl font-extrabold uppercase;
   }
+  .sub-title {
+    @apply text-left text-2xl font-extrabold uppercase;
+  }
   .btn-sm {
-    @apply rounded-full text-center py-1 px-5 border border-[var(--border-color)]
-    hover:opacity-90
+    @apply rounded-full text-center py-0.5 px-5 border border-[var(--border-color)]
     active:scale-95
     transition-all;
   }
@@ -50,6 +67,9 @@
   }
   .btn-secondary {
     @apply text-[var(--text-black)] bg-transparent
-    border border-[var(--border-color)];
+    border border-zinc-400
+    hover:font-semibold
+    hover:border-[var(--primary-color)]
+    hover:text-[var(--primary-color)];
   }
 }

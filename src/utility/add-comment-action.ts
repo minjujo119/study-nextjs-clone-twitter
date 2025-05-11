@@ -1,7 +1,7 @@
 "use server";
 import db from "@/lib/db";
 import { IFormState } from "@/lib/interface";
-import getSession from "@/lib/session";
+import getSession from "@/utility/get-session";
 import { revalidateTag } from "next/cache";
 import { z } from "zod";
 
@@ -9,7 +9,7 @@ import { z } from "zod";
 const commentSchema = z.object({
   comment: z
     .string({
-      required_error: "답글 내용을 작성해주세요",
+      required_error: "",
     })
     .min(1, "내용을 작성해주세요"),
 });

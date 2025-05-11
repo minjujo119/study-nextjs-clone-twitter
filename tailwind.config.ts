@@ -6,7 +6,14 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  theme: {},
+  theme: {
+    extend: {
+      spacing: {
+        screenTop: "60px",
+        containerSide: "18px",
+      },
+    },
+  },
   plugins: [],
 };
 export default config;

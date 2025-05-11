@@ -8,7 +8,7 @@ export default function Pagination({
   isLast,
 }: IProps) {
   return (
-    <nav className="w-full flex justify-between items-center pt-3">
+    <nav className="w-full flex justify-between items-center py-1 px-containerSide">
       <button
         onClick={onPrev}
         disabled={isFirst}

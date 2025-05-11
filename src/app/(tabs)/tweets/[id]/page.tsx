@@ -29,11 +29,12 @@ export default async function TweetDetailPage({
 
   // 캐싱된 Comment 가져오기
   const comments = await getCachedComments(tweetId);
+
   return (
-    <>
+    <div className="container">
       <section>
         {/* 유저정보 */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 px-containerSide">
           <span className="block size-14 rounded-full bg-[var(--primary-color)]"></span>
           <div className="space-x-2">
             <Link href={"/profile"} className="text-lg">
@@ -42,14 +43,14 @@ export default async function TweetDetailPage({
           </div>
         </div>
         {/* 본문 */}
-        <div className="pt-5 space-y-3">
+        <div className="pt-5 space-y-3 px-containerSide">
           <p className="leading-7 text-xl">{tweetDetails.tweet}</p>
           <p className="text-[var(--text-gray)]">
             {formatedTimestamp(tweetDetails.created_at)}
           </p>
         </div>
         {/* 하단 바 */}
-        <div className="flex justify-around mt-5 py-2 border-y border-y-[var(--border-color)]">
+        <div className="flex justify-around mt-5 py-2 px-containerSide border-y border-y-[var(--border-color)]">
           <LikeButton
             tweetId={tweetId}
             isLiked={likeStatus.isLiked}
@@ -66,6 +67,6 @@ export default async function TweetDetailPage({
       <section>
         <CommentSection tweetId={tweetId} allComments={comments} />
       </section>
-    </>
+    </div>
   );
 }

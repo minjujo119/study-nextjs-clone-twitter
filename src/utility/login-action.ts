@@ -1,8 +1,8 @@
 "use server";
 import db from "@/lib/db";
-import getSession from "@/lib/session";
+import getSession from "@/utility/get-session";
 import { IFormState } from "@/lib/interface";
-import { loginSchema } from "@/utility/login-validation";
+import { loginSchema } from "@/utility/validation-schema";
 import { redirect } from "next/navigation";
 
 export const loginAction = async (
@@ -39,12 +39,14 @@ export const loginAction = async (
       },
       select: {
         id: true,
+        username: true,
       },
     });
 
     // 2. 세션에 유저정보 저장 후(=로그인) 다른 페이지로 리다이렉팅
     const session = await getSession();
     session.id = user!.id;
+    session.username = user!.username;
     await session.save();
     redirect("/");
 

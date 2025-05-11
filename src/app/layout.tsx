@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "@/app/globals.css";
 
 export const metadata: Metadata = {
   title: {
@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className="bg-[var(--bg-color)]">
-        <main className="relative max-w-[480px] min-w-[360px] min-h-screen m-auto py-20 px-3">
+        <main className="relative limited-width min-h-screen m-auto">
           {children}
         </main>
       </body>

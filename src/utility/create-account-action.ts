@@ -1,9 +1,9 @@
 "use server";
 import bcrypt from "bcrypt";
 import db from "@/lib/db";
-import getSession from "@/lib/session";
+import getSession from "@/utility/get-session";
 import { IFormState } from "@/lib/interface";
-import { createAccountSchema } from "@/utility/login-validation";
+import { createAccountSchema } from "@/utility/validation-schema";
 import { redirect } from "next/navigation";
 
 export const createAccountAction = async (
@@ -47,7 +47,6 @@ export const createAccountAction = async (
         id: true,
       },
     });
-    console.log(user);
 
     // 3. 세션에 유저정보 저장 후(=로그인) 다른 페이지로 리다이렉팅
     const session = await getSession();

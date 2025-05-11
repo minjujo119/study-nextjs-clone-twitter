@@ -19,7 +19,7 @@ export default function CommentSection({ tweetId, allComments }: IProps) {
   );
 
   // 답글 폼 제출 시 동작
-  const [formState, formAction] = useFormState(
+  const [state, trigger] = useFormState(
     async (prevState: IFormState, formdata: FormData): Promise<IFormState> => {
       const result = await addCommentAction(prevState, formdata);
 
@@ -43,9 +43,9 @@ export default function CommentSection({ tweetId, allComments }: IProps) {
   return (
     <>
       {/* 답글 입력 폼*/}
-      <div className="flex items-start gap-3 py-6">
+      <div className="flex items-start gap-3 py-6 px-containerSide">
         <span className="block size-14 rounded-full bg-[var(--primary-color)]"></span>
-        <form action={formAction} className="flex-1">
+        <form action={trigger} className="flex-1">
           <textarea
             ref={textAreaRef}
             name="comment"
@@ -57,7 +57,7 @@ export default function CommentSection({ tweetId, allComments }: IProps) {
           "
           />
           <input type="hidden" name="tweetId" value={tweetId} />
-          <span>{formState.fieldErrors?.comment}</span>
+          <span>{state.fieldErrors?.comment}</span>
           <button type="submit" className="btn btn-sm">
             Reply
           </button>
@@ -69,7 +69,8 @@ export default function CommentSection({ tweetId, allComments }: IProps) {
         {optimisticComments.map((comment) => (
           <li key={comment.id}>
             <CommentItem
-              id={comment.id}
+              tweetId={tweetId}
+              commentId={comment.id}
               comment={comment.comment}
               username={comment.user.username}
               created_at={comment?.created_at}

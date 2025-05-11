@@ -8,14 +8,13 @@ export default async function StartPage() {
   const initialTweets = await getTweets(0);
 
   return (
-    <>
-      <section className="pb-16">
+    <div className="container">
+      <section className="px-containerSide">
         <AddTweetForm />
       </section>
-      <section className="relative pt-16 after:absolute after:z-50 after:top-0 after:left-1/2 after:-translate-x-1/2 after:content-[''] after:w-screen after:h-4 after:bg-white">
-        <h2 className="main-title">Tweets</h2>
+      <section className="relative mt-10 border-t border-t-[var(--border-color)]">
         <TweetList initialTweets={initialTweets} />
       </section>
-    </>
+    </div>
   );
 }
