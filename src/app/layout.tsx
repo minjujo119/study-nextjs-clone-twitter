@@ -3,10 +3,13 @@ import "@/app/globals.css";
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Zwitter",
-    default: "Zwitter",
+    template: "%s | W",
+    default: "W",
   },
-  description: "MJ's Zwitter",
+  icons: {
+    icon: "./favicon.ico",
+  },
+  description: "minju's study project",
 };
 
 export default function RootLayout({

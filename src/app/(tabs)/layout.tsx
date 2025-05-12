@@ -1,17 +1,8 @@
 export const dynamic = "force-dynamic";
 
-import type { Metadata } from "next";
 import "@/app/globals.css";
 import Menu from "@/components/Menu";
 import getSession from "@/utility/get-session";
-
-export const metadata: Metadata = {
-  title: {
-    template: "%s | Zwitter",
-    default: "Zwitter",
-  },
-  description: "MJ's Zwitter",
-};
 
 export default async function TabLayout({
   children,

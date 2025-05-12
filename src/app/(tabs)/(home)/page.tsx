@@ -3,6 +3,8 @@ import AddTweetForm from "@/components/AddTweetForm";
 import TweetList from "@/components/TweetList";
 import { getTweets } from "@/utility/tweets-action";
 
+export const metadata = { title: "Home" };
+
 export default async function StartPage() {
   // 스킵 없이 첫페이지 가져오기
   const initialTweets = await getTweets(0);

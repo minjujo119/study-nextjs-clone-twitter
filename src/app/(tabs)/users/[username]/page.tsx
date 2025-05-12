@@ -8,6 +8,8 @@ import { logOut } from "@/utility/logout-action";
 import Link from "next/link";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
 
+export const metadata = { title: "My page" };
+
 export default async function UserPage() {
   const user = await getCurrentUser();
   const tweets = await getMyTweets(user!.id);
@@ -58,7 +60,7 @@ export default async function UserPage() {
 
       <section className="pt-9">
         <h3 className="text-lg font-bold px-containerSide text-[var(--primary-color)]">
-          MY TWEETS
+          TWEETS
         </h3>
         <div className="pt-2">
           {tweets.length !== 0 ? (

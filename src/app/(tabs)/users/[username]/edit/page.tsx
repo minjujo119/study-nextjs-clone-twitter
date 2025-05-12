@@ -1,7 +1,6 @@
 export const dynamic = "force-dynamic";
 
 import EditForm from "@/components/Editform";
-
 import {
   editBioAction,
   editEmailAction,
@@ -9,6 +8,8 @@ import {
   editUsernameAction,
 } from "@/utility/edit-profile-action";
 import { getCurrentUser } from "@/utility/get-current-user";
+
+export const metadata = { title: "Edit" };
 
 export default async function EditPage() {
   // 현재 로그인된 유저 정보 가져오기
