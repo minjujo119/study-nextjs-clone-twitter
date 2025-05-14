@@ -118,7 +118,7 @@ export const loginSchema = z
       },
     });
     // 입력된 email과 DB의 email이 다른 경우 에러
-    if (email !== user!.email) {
+    if (email !== user?.email) {
       ctx.addIssue({
         code: "custom",
         message: ERROR_EMAIL_NOT_CORRECT,
@@ -153,7 +153,97 @@ export const loginSchema = z
     }
   });
 
-// 프로필 수정 zod 스키마
+// 유저네임 수정 스키마
+export const editUsernameSchema = z.object({
+  username: z
+    .string()
+    .min(USERNAME_MIN_LENGTH, ERROR_USERNAME_MIN_LENGTH)
+    .refine(
+      async (username) => {
+        // 유저네임 중복 있는지 검사
+        const isUsername = await db.user.findUnique({
+          where: {
+            username,
+          },
+          select: {
+            id: true,
+          },
+        });
+        // username이 빈문자열이 아닐 때 중복이 아니면 통과
+        return !username || !isUsername;
+      },
+      {
+        message: ERROR_USERNAME_EXISTED,
+        path: ["username"],
+      }
+    ),
+});
+
+// 이메일 수정 스키마
+export const editEmailSchema = z.object({
+  email: z
+    .string()
+    .email("")
+    .refine(checkEmail, ERROR_EMAIL_ALLOWED)
+    // 중복 이메일 검사
+    .refine(
+      async (email) => {
+        const isEmail = await db.user.findUnique({
+          where: {
+            email,
+          },
+          select: {
+            id: true,
+          },
+        });
+        return !Boolean(isEmail);
+      },
+      {
+        message: ERROR_EMAIL_EXISTED,
+        path: ["email"],
+      }
+    ),
+});
+
+// 비밀번호 수정 스키마
+export const editPasswordSchema = z.object({
+  password: z
+    .string()
+    .regex(/\d/, ERROR_PWD_MIN_NUMBER)
+    .refine(
+      (val) => !val || val.length >= PASSWORD_MIN_LENGTH,
+      ERROR_PWD_MIN_LENGTH
+    )
+    // 기존 비번과 중복되는지 검사
+    .refine(
+      async (password) => {
+        const session = await getSession();
+        const isPassword = await db.user.findUnique({
+          where: {
+            id: session.id,
+          },
+          select: {
+            password: true,
+          },
+        });
+
+        // password가 빈 문자열이 아니면
+        // bcrypt로 해시된 비번과 현재 입력값을 비교하여 같으면 false 반환, 다르면 true 반환
+        return (
+          !password || !(await bcrypt.compare(password, isPassword!.password))
+        );
+      },
+      {
+        message: ERROR_PWD_NEED_CHANGE,
+        path: ["password"],
+      }
+    ),
+});
+
+// 바이오 수정 스키마
+export const editBioSchema = z.object({ bio: z.string() });
+
+// 프로필 섹션 전체 수정 zod 스키마
 // export const editProfileSchema = z
 //   .object({
 //     username: z
@@ -247,93 +337,3 @@ export const loginSchema = z
 //       path: ["password"],
 //     }
 //   );
-
-// 유저네임 수정 스키마
-export const editUsernameSchema = z.object({
-  username: z
-    .string()
-    .min(USERNAME_MIN_LENGTH, ERROR_USERNAME_MIN_LENGTH)
-    .refine(
-      async (username) => {
-        // 유저네임 중복 있는지 검사
-        const isUsername = await db.user.findUnique({
-          where: {
-            username,
-          },
-          select: {
-            id: true,
-          },
-        });
-        // username이 빈문자열이 아닐 때 중복이 아니면 통과
-        return !username || !isUsername;
-      },
-      {
-        message: ERROR_USERNAME_EXISTED,
-        path: ["username"],
-      }
-    ),
-});
-
-// 이메일 수정 스키마
-export const editEmailSchema = z.object({
-  email: z
-    .string()
-    .email("")
-    .refine(checkEmail, ERROR_EMAIL_ALLOWED)
-    // 중복 이메일 검사
-    .refine(
-      async (email) => {
-        const isEmail = await db.user.findUnique({
-          where: {
-            email,
-          },
-          select: {
-            id: true,
-          },
-        });
-        return !Boolean(isEmail);
-      },
-      {
-        message: ERROR_EMAIL_EXISTED,
-        path: ["email"],
-      }
-    ),
-});
-
-// 비밀번호 수정 스키마
-export const editPasswordSchema = z.object({
-  password: z
-    .string()
-    .regex(/\d/, ERROR_PWD_MIN_NUMBER)
-    .refine(
-      (val) => !val || val.length >= PASSWORD_MIN_LENGTH,
-      ERROR_PWD_MIN_LENGTH
-    )
-    // 기존 비번과 중복되는지 검사
-    .refine(
-      async (password) => {
-        const session = await getSession();
-        const isPassword = await db.user.findUnique({
-          where: {
-            id: session.id,
-          },
-          select: {
-            password: true,
-          },
-        });
-
-        // password가 빈 문자열이 아니면
-        // bcrypt로 해시된 비번과 현재 입력값을 비교하여 같으면 false 반환, 다르면 true 반환
-        return (
-          !password || !(await bcrypt.compare(password, isPassword!.password))
-        );
-      },
-      {
-        message: ERROR_PWD_NEED_CHANGE,
-        path: ["password"],
-      }
-    ),
-});
-
-// 바이오 수정 스키마
-export const editBioSchema = z.object({ bio: z.string() });

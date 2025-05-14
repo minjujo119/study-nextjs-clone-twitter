@@ -7,14 +7,14 @@ import {
   editPasswordAction,
   editUsernameAction,
 } from "@/utility/edit-profile-action";
-import { getCurrentUser } from "@/utility/get-current-user";
+import { getSessionUser } from "@/utility/get-session-user";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
 
 export const metadata = { title: "Edit" };
 
 export default async function EditPage() {
   // 현재 로그인된 유저 정보 가져오기
-  const user = await getCurrentUser();
+  const user = await getSessionUser();
 
   return (
     <div className="container pt-0">

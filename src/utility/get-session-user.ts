@@ -3,7 +3,7 @@ import notFound from "@/app/not-found";
 import db from "@/lib/db";
 import getSession from "@/utility/get-session";
 
-export const getCurrentUser = async () => {
+export const getSessionUser = async () => {
   const session = await getSession();
   if (session.id) {
     const user = await db.user.findUnique({
