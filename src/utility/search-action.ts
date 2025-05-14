@@ -23,6 +23,7 @@ export const searchAction = async (
       where: {
         tweet: {
           contains: keyword as string,
+          mode: "insensitive",
         },
       },
       select: {
