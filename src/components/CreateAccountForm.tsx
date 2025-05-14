@@ -15,27 +15,27 @@ export default function CreateAccountForm() {
         name={"username"}
         type={"text"}
         errors={state?.fieldErrors?.username}
-        placeholder={"username"}
+        placeholder={"닉네임"}
       />
       <Input
         name={"email"}
-        type={"email"}
+        type={"text"}
         errors={state?.fieldErrors?.email}
-        placeholder={"email"}
+        placeholder={"이메일 주소"}
       />
       <Input
         name={"password"}
         type={"password"}
         errors={state?.fieldErrors?.password}
-        placeholder={"password"}
+        placeholder={"비밀번호 | 최소 1개 이상의 숫자 포함"}
       />
       <Input
         name={"password_confirm"}
         type={"password"}
         errors={state?.fieldErrors?.password_confirm}
-        placeholder={"confirm password"}
+        placeholder={"비밀번호 확인"}
       />
-      <Button text={"SIGN UP"} />
+      <Button text={"회원가입"} />
     </form>
   );
 }

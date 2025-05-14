@@ -12,24 +12,18 @@ export default function LoginForm() {
   return (
     <form action={trigger} className="space-y-3">
       <Input
-        name={"username"}
-        type={"text"}
-        errors={state?.fieldErrors?.username}
-        placeholder={"username"}
-      />
-      <Input
         name={"email"}
-        type={"email"}
+        type={"text"}
         errors={state?.fieldErrors?.email}
-        placeholder={"email"}
+        placeholder={"이메일 주소 입력"}
       />
       <Input
         name={"password"}
         type={"password"}
         errors={state?.fieldErrors?.password}
-        placeholder={"password"}
+        placeholder={"비밀번호 입력"}
       />
-      <Button text={"LOGIN"} />
+      <Button text={"로그인"} />
     </form>
   );
 }

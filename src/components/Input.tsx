@@ -5,7 +5,7 @@ export default function Input({ name, type, errors = [], ...rest }: IProps) {
   const inputIcon = () => {
     if (name === "username") return <UserIcon />;
     if (name === "email") return <EnvelopeIcon />;
-    if (name === "password" || type === "password") return <KeyIcon />;
+    if (type === "password") return <KeyIcon />;
     return null;
   };
 
@@ -16,17 +16,10 @@ export default function Input({ name, type, errors = [], ...rest }: IProps) {
           {inputIcon()}
         </span>
         <input
-          className={`
-            w-full rounded-full 
-            bg-transparent
-            border border-[var(--border-color)]
-            py-3 px-14 text-md
-            invalid:border-[var(--invalid-color)]
-            focus:border-[var(--primary-color)]
-            placeholder:text-[var(--text-gray)]
-            ${errors.length !== 0 ? `border-[var(--invalid-color)]` : null}
-          `}
+          className={`w-full rounded-full bg-transparent border border-[var(--border-color)] py-3 px-14 text-md invalid:border-[var(--invalid-color)] focus:border-[var(--primary-color)] placeholder:text-[var(--text-gray)]
+            ${errors.length !== 0 ? `border-[var(--invalid-color)]` : null}`}
           name={name}
+          type={type}
           {...rest}
         />
         <ul className="text-xs text-[var(--invalid-color)] px-4 mt-2">
@@ -43,5 +36,6 @@ export default function Input({ name, type, errors = [], ...rest }: IProps) {
 
 interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
+  type: string;
   errors?: string[];
 }

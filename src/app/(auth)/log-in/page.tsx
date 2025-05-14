@@ -7,7 +7,9 @@ export default function LoginPage() {
   return (
     <>
       <header className="-mt-20">
-        <h1 className="text-[200px] leading-none text-center">&#120168;</h1>
+        <h1 className="text-[200px] animate-pulse leading-none text-center">
+          &#120168;
+        </h1>
       </header>
       <div className="pt-5">
         <LoginForm />
