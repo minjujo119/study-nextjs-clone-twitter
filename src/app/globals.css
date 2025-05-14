@@ -4,15 +4,16 @@
 @tailwind utilities;
 
 :root {
-  --bg-color: #1d1d1d;
-  --border-color: #555;
+  --bg-color: #2b2b2b;
+  --border-color: #666;
   --primary-color: #2dd4bf;
   --secondary-color: rgba(45, 212, 191, 0.5);
   --warning-color: #f59e0b;
   --invalid-color: #ef4444;
   --success-color: #10b981;
-  --disabled-color: #bbb;
+  --disabled-color: #777;
   --text-color: #fff;
+  --text-inversion-color: #111;
   --text-gray: #555;
   --skeleton-color: rgba(255, 255, 255, 0.1);
 }
@@ -33,11 +34,14 @@
   textarea {
     @apply outline-none appearance-none resize-none;
   }
+  ::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @layer components {
   .container {
-    @apply flex-1 py-12 min-h-screen border-l border-l-[var(--border-color)];
+    @apply flex-1 py-12 h-screen overflow-auto border-l border-l-[var(--border-color)];
   }
   .limited-width {
     @apply max-w-screen-md min-w-[480px];
@@ -58,14 +62,14 @@
     outline-none py-3 px-12
     text-xl font-bold
     text-center
-    disabled:bg-[var(--disabled-color)]
+    disabled:bg-[var(--secondary-color)]
     disabled:text-gray-400
     hover:opacity-90
     active:scale-95
     transition-all;
   }
   .btn-primary {
-    @apply text-black bg-[var(--primary-color)];
+    @apply text-[var(--text-inversion-color)] bg-[var(--primary-color)];
   }
   .btn-secondary {
     @apply text-[var(--secondary-color)] bg-transparent

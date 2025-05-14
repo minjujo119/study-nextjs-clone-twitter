@@ -8,6 +8,7 @@ import {
   editUsernameAction,
 } from "@/utility/edit-profile-action";
 import { getCurrentUser } from "@/utility/get-current-user";
+import { UserCircleIcon } from "@heroicons/react/24/outline";
 
 export const metadata = { title: "Edit" };
 
@@ -24,7 +25,9 @@ export default async function EditPage() {
         {/* 닉네임 수정 */}
         <div className="px-containerSide">
           <div className="-mt-12">
-            <span className="block rounded-full size-24 bg-[var(--primary-color)] ring-4 ring-[var(--bg-color)]"></span>
+            <span className="block rounded-full size-24 bg-[var(--bg-color)] ring-4 ring-[var(--bg-color)]">
+              <UserCircleIcon className="icon-avatar-default" />
+            </span>
             <EditForm
               editType={"username"}
               inputType={"text"}

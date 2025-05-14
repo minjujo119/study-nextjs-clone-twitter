@@ -12,14 +12,23 @@ export default function Pagination({
       <button
         onClick={onPrev}
         disabled={isFirst}
-        className="transition-all rounded-full p-3 enabled:hover:bg-teal-300 enabled:active:scale-90 text-[var(--text-color)] disabled:text-[var(--disabled-color)]"
+        className="transition-all rounded-full p-3 
+        enabled:hover:bg-[var(--primary-color)]
+        enabled:hover:text-[var(--text-inversion-color)]
+        enabled:active:scale-90 text-[var(--text-color)] 
+        disabled:text-[var(--disabled-color)]"
       >
         <ArrowLeftIcon className="size-6" />
       </button>
+      <h2 className="font-bold">TWEETS</h2>
       <button
         onClick={onNext}
         disabled={isLast}
-        className="transition-all rounded-full p-3 enabled:hover:bg-teal-300 enabled:active:scale-90 text-[var(--text-color)] disabled:text-[var(--disabled-color)]"
+        className="transition-all rounded-full p-3 
+        enabled:hover:bg-[var(--primary-color)]
+        enabled:hover:text-[var(--text-inversion-color)]
+        enabled:active:scale-90 text-[var(--text-color)] 
+        disabled:text-[var(--disabled-color)]"
       >
         <ArrowRightIcon className="size-6" />
       </button>

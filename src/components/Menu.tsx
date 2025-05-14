@@ -13,7 +13,7 @@ export default function Menu({ username }: IProps) {
   const pathname = usePathname();
   console.log(pathname);
   return (
-    <nav className="relative w-36 h-screen py-10 bg-[var(--bg-color)] flex-shrink-0">
+    <nav className="relative w-36 h-screen overflow-hidden py-10 bg-[var(--bg-color)] flex-shrink-0">
       <div className="*:text-lg *:rounded-full *:overflow-hidden *:transition-colors">
         {menulinks.map((menu, index) => {
           // 경로가 메뉴명으로 시작하면 강조
@@ -25,14 +25,13 @@ export default function Menu({ username }: IProps) {
             <Link
               key={index}
               href={menu.href == "/users" ? `/users/${username}` : menu.href}
-              className={`
-              hover:text-[var(--primary-color)] inline-block py-3 px-5
-              ${
-                isActive
-                  ? "text-[var(--primary-color)] font-bold"
-                  : "text-[var(--text-color)]"
-              }
-            `}
+              className={`hover:text-[var(--primary-color)] inline-block py-3 px-5
+                ${
+                  isActive
+                    ? "text-[var(--primary-color)] font-bold"
+                    : "text-[var(--text-color)]"
+                }
+              `}
             >
               {menu.title}
             </Link>

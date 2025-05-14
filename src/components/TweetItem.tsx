@@ -17,8 +17,7 @@ export default function TweetItem({
       className="
         flex justify-between gap-3 items-center 
         py-5 px-containerSide 
-        border-t border-t-[var(--border-color)]
-        first:border-t-0
+        border-b border-b-[var(--border-color)]
       "
     >
       <div className="flex items-center gap-3">
