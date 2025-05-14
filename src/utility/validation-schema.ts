@@ -11,7 +11,6 @@ import {
   ERROR_PWD_NOT_CORRECT,
   PASSWORD_MIN_LENGTH,
   USERNAME_MIN_LENGTH,
-  ERROR_USERNAME_NOT_EXISTED,
   ERROR_EMAIL_NOT_CORRECT,
   ERROR_PWD_NEED_CHANGE,
 } from "@/lib/constants";
@@ -104,35 +103,14 @@ export const createAccountSchema = z
 // 로그인 zod 스키마
 export const loginSchema = z
   .object({
-    username: z.string().trim(),
     email: z.string().email(ERROR_EMAIL_INVALID).trim().toLowerCase(),
     password: z.string().trim(),
   })
-  // 존재하는 유저인지 검사
-  .superRefine(async ({ username }, ctx) => {
-    const user = await db.user.findUnique({
-      where: {
-        username,
-      },
-      select: {
-        id: true,
-      },
-    });
-    if (!user) {
-      ctx.addIssue({
-        code: "custom",
-        message: ERROR_USERNAME_NOT_EXISTED,
-        path: ["username"],
-        fatal: true,
-      });
-      return z.NEVER;
-    }
-  })
   // 유저 레코드에 등록된 이메일 일치 검사
-  .superRefine(async ({ username, email }, ctx) => {
+  .superRefine(async ({ email }, ctx) => {
     const user = await db.user.findUnique({
       where: {
-        username,
+        email,
       },
       select: {
         id: true,
@@ -151,10 +129,10 @@ export const loginSchema = z
     }
   })
   // 유저 레코드에 등록된 비번 일치 검사
-  .superRefine(async ({ username, password }, ctx) => {
+  .superRefine(async ({ email, password }, ctx) => {
     const user = await db.user.findUnique({
       where: {
-        username,
+        email,
       },
       select: {
         id: true,

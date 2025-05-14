@@ -14,7 +14,6 @@ export const loginAction = async (
 
   // input 입력값 가져오기
   const data = {
-    username: formData.get("username"),
     email: formData.get("email"),
     password: formData.get("password"),
   };
@@ -35,7 +34,7 @@ export const loginAction = async (
     // 1. 입력된 닉네임에 해당하는 DB 레코드 찾기
     const user = await db.user.findUnique({
       where: {
-        username: result.data.username,
+        email: result.data.email,
       },
       select: {
         id: true,
