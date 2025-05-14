@@ -36,8 +36,11 @@ export default async function TweetDetailPage({
         <div className="flex items-center gap-2 px-containerSide">
           <span className="avatar">
             <UserCircleIcon className="icon-avatar-default" />
-          </span>{" "}
-          <Link href={"/profile"} className="text-lg">
+          </span>
+          <Link
+            href={`/users/${tweetDetails.user.username}`}
+            className="text-lg"
+          >
             {tweetDetails.user.username}
           </Link>
         </div>

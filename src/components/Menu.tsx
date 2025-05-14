@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 const menulinks = [
   { title: "Home", href: "/" },
   { title: "Search", href: "/search" },
-  { title: "My Page", href: "/users" },
+  { title: "Profile", href: "/users" },
 ];
 
 export default function Menu({ username }: IProps) {
@@ -39,11 +39,13 @@ export default function Menu({ username }: IProps) {
         })}
       </div>
 
-      <div className="absolute flex gap-2 items-center bottom-4 left-3">
+      <div className="absolute flex gap-2 items-center bottom-8 left-3">
         <span className="avatar size-8">
           <UserCircleIcon className="icon-avatar-default" />
         </span>
-        <p className="text-center">{username}</p>
+        <p className="text-center after:content-[''] after:absolute after:top-1/2 after:-right-3 after:-translate-y-1/2 after:size-2 after:rounded-full after:bg-[var(--primary-color)]">
+          {username}
+        </p>
       </div>
     </nav>
   );
